@@ -22,6 +22,7 @@ There are multiple function in the script, but only one is used (please select a
 
 
 Changelog
+
 2024-05-13
 - added support for logging, required SQL Server
 
