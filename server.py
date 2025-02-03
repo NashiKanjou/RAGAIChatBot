@@ -1,6 +1,6 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
-import cgi
+from email.message import EmailMessage
 import logging
 
 from query import *
@@ -21,8 +21,10 @@ class Server(BaseHTTPRequestHandler):
         
     # POST echoes the message adding a JSON field
     def do_POST(self):
-        ctype, pdict = cgi.parse_header(self.headers.get('content-type'))
-        
+        #ctype, pdict = cgi.parse_header(self.headers.get('content-type'))
+        msg = EmailMessage()
+        msg['content-type'] = 'application/json; charset="utf8"'
+        ctype, pdict = msg.get_content_type(), msg['content-type'].params
         # refuse to receive non-json content
         if ctype != 'application/json':
             self.send_response(400)
@@ -60,16 +62,16 @@ class Server(BaseHTTPRequestHandler):
         
         results = []
         if model == None and db == None:
-            results.append(runSingleQuery(query=query))
+            results.append(runQuery_NoLimit(query=query))
             #results = runQuery(query=query)
         elif model == None and not db == None:
-            results.append(runSingleQuery(query=query, persist_directory=db))
+            results.append(runQuery_NoLimit(query=query, persist_directory=db))
             #results = runQuery(query=query, persist_directory=db)
         elif not model == None and db == None:
-            results.append(runSingleQuery(query=query, model=model))
+            results.append(runQuery_NoLimit(query=query, model=model))
             #results = runQuery(query=query, model=model)
         else:
-            results.append(runSingleQuery(query=query, persist_directory=db, model=model))
+            results.append(runQuery_NoLimit(query=query, persist_directory=db, model=model))
             #results = runQuery(query=query, persist_directory=db, model=model)
         
         print(results)
