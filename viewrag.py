@@ -8,7 +8,7 @@ db_password = os.getenv('DB_PASSWORD')
 # SQL Server connection string
 connection_string = (
     'DRIVER={SQL Server};'  # Or use the specific driver version you have, like 'ODBC Driver 17 for SQL Server'
-    'SERVER=128.200.248.108\SQLEXPRESS;'
+    'SERVER=127.0.0.1\SQLEXPRESS;'
     'DATABASE=ragdb;'
     'UID=' + db_username + ';'
     'PWD=' + db_password
