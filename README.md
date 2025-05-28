@@ -1,5 +1,7 @@
 This repo is not maintained anymore (I am developing a new version with C#)
 
+I am working on new LLM project [Here](https://github.com/NashiKanjou/ArsCore)
+
 Description:
 This is a RAG AI Chatbot that will only answer the question(s) related to the local files.
 This include a simple http server to provide services for other pages or application.
