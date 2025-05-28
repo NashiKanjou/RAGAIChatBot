@@ -1,4 +1,4 @@
-This repo is not maintained anymore (I am developing a new version with C#)
+This repo is not maintained anymore
 
 I am working on new LLM project [Here](https://github.com/NashiKanjou/ArsCore)
 
